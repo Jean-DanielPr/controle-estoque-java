@@ -32,7 +32,9 @@ public class Produto {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("O produto precisa ter um nome.");
+        }
     }
 
     public double getPreco() {
@@ -40,6 +42,9 @@ public class Produto {
     }
 
     public void setPreco(double preco) {
+        if (preco < 0){
+            throw new IllegalArgumentException("O preço não poder ser negativo.");
+        }
         this.preco = preco;
     }
 
