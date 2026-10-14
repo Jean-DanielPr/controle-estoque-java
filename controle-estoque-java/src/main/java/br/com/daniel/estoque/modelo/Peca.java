@@ -39,8 +39,8 @@ public class Peca {
     }
 
     public void setCodigo(int codigo) {
-        if (codigo < 10) {
-            throw new IllegalArgumentException("O código do produto deve possuir no mínimo 2 números.");
+        if (codigo <= 0) {
+            throw new IllegalArgumentException("O código do produto deve ser maior do que 0.");
         }
         this.codigo = codigo;
     }
@@ -53,6 +53,7 @@ public class Peca {
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException("A peça precisa ter um nome.");
         }
+        this.nome = nome;
     }
 
     public double getValorUnitarioCompra() {
