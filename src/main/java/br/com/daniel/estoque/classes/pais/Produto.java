@@ -1,15 +1,15 @@
-package br.com.daniel.estoque.modelo;
+package br.com.daniel.estoque.classes.pais;
 
-public class Peca {
+public class Produto {
     private int codigo;
     private String nome;
     private double valorUnitarioCompra;
     private double valorVenda;
     private int quantidade;
     private int estoqueMin;
-    private static final double LUCRO_PECA = 0.30;
+    private static final double MARGEM_LUCRO = 0.30;
 
-    public Peca(int codigo, String nome, double valorUnitarioCompra, int quantidade, int estoqueMin) {
+    public Produto(int codigo, String nome, double valorUnitarioCompra, int quantidade, int estoqueMin) {
         setCodigo(codigo);
         setNome(nome);
         setValorUnitarioCompra(valorUnitarioCompra);
@@ -18,7 +18,7 @@ public class Peca {
         setEstoqueMin(estoqueMin);
     }
 
-    public Peca(int codigo, String nome, double valorUnitarioCompra) {
+    public Produto(int codigo, String nome, double valorUnitarioCompra) {
         this(codigo, nome, valorUnitarioCompra, 0, 2);
     }
 
@@ -72,7 +72,7 @@ public class Peca {
     }
 
     public void setValorVenda() {
-        this.valorVenda = this.valorUnitarioCompra + (this.valorUnitarioCompra * LUCRO_PECA);
+        this.valorVenda = this.valorUnitarioCompra + (this.valorUnitarioCompra * MARGEM_LUCRO);
     }
 
     public int getQuantidade() {
