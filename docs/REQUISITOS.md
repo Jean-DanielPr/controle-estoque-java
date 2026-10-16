@@ -2,24 +2,22 @@
 
 ## Objetivo:
 
-Resolver o problema de controle de estoque de uma oficina de veículos automotivos. O dono não sabe o que tem ou 
-a quantidade do que tem, não sabe o que entra ou sai e atualmente não faz nenhum tipo de gerenciamento do seu estoque.
+Resolver o problema de controle de estoque de peças de uma oficina de veículos automotivos. 
+O dono não sabe o que tem no estoque ou a quantidade do que tem, não sabe o que entra ou sai e atualmente não faz nenhum tipo de gerenciamento do seu estoque.
 
 ---
 ## Usuários do Sistema
 
 - Dono da oficina
-- Filho do dono
 
 ## Problemas Identificados
 
-- Dono não registra o que entra no estoque.
-- Dono não registra o que sai do estoque.
-- Para saber o que está em falta, ele precisa ir pessoalmente verificar.
+- O que entra e sai do estoque não é registrado.
+- Para saber o que está em falta, é precisa ir pessoalmente no estoque para verificar.
 - Algumas peças não indicam o nome do veículo para qual ela foi feita, necessita de consultas com o fornecedor para saber
-e isso não fica guardado em nenhum lugar.
+e isso não fica registrado em nenhum lugar, para futuras pesquisas da mesma peça.
 - Não tem acesso ao valor que pagou em peças mais antigas no estoque.
-- Precisa calcular na mão um valor de 30% em cima de cada peça comprada para ver o valor de venda.
+- Precisa calcular na mão um valor de 30% de lucro em cima de cada peça comprada para ver o valor de venda.
 
 ## Requisitos Funcionais
 
