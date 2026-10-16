@@ -1,7 +1,9 @@
 package br.com.daniel.estoque.classes.pais;
 
-public class Produto {
-    private int codigo;
+import br.com.daniel.estoque.contratos.GerenciaAcoes;
+
+public class Produto implements GerenciaAcoes {
+    private String codigo;
     private String nome;
     private double valorUnitarioCompra;
     private double valorVenda;
@@ -9,7 +11,7 @@ public class Produto {
     private int estoqueMin;
     private static final double MARGEM_LUCRO = 0.30;
 
-    public Produto(int codigo, String nome, double valorUnitarioCompra, int quantidade, int estoqueMin) {
+    public Produto(String codigo, String nome, double valorUnitarioCompra, int quantidade, int estoqueMin) {
         setCodigo(codigo);
         setNome(nome);
         setValorUnitarioCompra(valorUnitarioCompra);
@@ -18,29 +20,37 @@ public class Produto {
         setEstoqueMin(estoqueMin);
     }
 
-    public Produto(int codigo, String nome, double valorUnitarioCompra) {
+    public Produto(String codigo, String nome, double valorUnitarioCompra) {
         this(codigo, nome, valorUnitarioCompra, 0, 2);
     }
 
-    @Override
-    public String toString() {
+    public String informacoes() {
         return "Peca{" +
                 "codigo=" + codigo +
                 ", nome='" + nome + '\'' +
                 ", valorUnitarioCompra=" + valorUnitarioCompra +
                 ", valorVenda=" + valorVenda +
                 ", quantidade=" + quantidade +
-                ", estoqueMin=" + estoqueMin +
-                '}';
+                ", estoqueMin=" + estoqueMin;
     }
 
-    public int getCodigo() {
+    @Override
+    public void registraEntrada(int qtd){
+        this.quantidade += qtd;
+    }
+
+    @Override
+    public void registraSaida(int qtd){
+        this.quantidade -= qtd;
+    }
+
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        if (codigo <= 0) {
-            throw new IllegalArgumentException("O código do produto deve ser maior do que 0.");
+    public void setCodigo(String codigo) {
+        if (codigo == null || codigo.isBlank()) {
+            throw new IllegalArgumentException("O código do produto não pode ser vazio.");
         }
         this.codigo = codigo;
     }
@@ -51,7 +61,7 @@ public class Produto {
 
     public void setNome(String nome) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("A peça precisa ter um nome.");
+            throw new IllegalArgumentException("O produto precisa ter um nome.");
         }
         this.nome = nome;
     }
@@ -62,7 +72,7 @@ public class Produto {
 
     public void setValorUnitarioCompra(double valorUnitarioCompra) {
         if (valorUnitarioCompra <= 0){
-            throw new IllegalArgumentException("O preço da peça não poder ser menor ou igual a 0.");
+            throw new IllegalArgumentException("O preço do produto não poder ser menor ou igual a 0.");
         }
         this.valorUnitarioCompra = valorUnitarioCompra;
     }
